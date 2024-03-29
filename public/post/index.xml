@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on Petras Site</title>
+        <link>http://localhost:1313/post/</link>
+        <description>Recent content in Posts on Petras Site</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 24 Mar 2024 23:15:26 +0700</lastBuildDate><atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>VLAN</title>
+        <link>http://localhost:1313/post/vlan/vlan/</link>
+        <pubDate>Sun, 24 Mar 2024 23:15:26 +0700</pubDate>
+        
+        <guid>http://localhost:1313/post/vlan/vlan/</guid>
+        <description>&lt;h1 id=&#34;virtual-lan-vlan&#34;&gt;Virtual LAN (VLAN)&lt;/h1&gt;
+&lt;p&gt;Virtual LAN (VLAN) adalah teknologi yang memungkinkan Anda untuk membagi satu broadcast domain menjadi beberapa broadcast domain, sehingga dalam satu switch bisa saja terdiri dari beberapa network. Host yang berbeda VLAN tidak akan tersambung sehingga meningkatkan security
+jaringan.&lt;/p&gt;
+&lt;p&gt;VLAN adalah fasilitas yang dimiliki oleh switch manageable, contohnya cisco. Pada
+switch unmanageable, port-port nya hanya dapat digunakan untuk koneksi ke
+network yang sama (satu network) sehingga tidak mendukung fasilitas VLAN.&lt;/p&gt;
+&lt;p&gt;Buatlah topologi seperti pada gambar dibawah pada packet tracer. Konfigurasi VLAN
+pada switch dengan VLAN10 berikan nama Marketing dan VLAN20 dengan nama
+Sales.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/TopologyVLAN.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;TopologyVLAN&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Switch&amp;gt;enable
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Switch#conf t
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Switch(config)#vlan 10
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Switch(config-vlan)#name Marketing
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Switch(config-vlan)#vlan 20
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Switch(config-vlan)#name Sales
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Switch(config-vlan)#int f0/1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Switch(config-if)#switchport access vlan 10
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Switch(config-if)#int f0/2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Switch(config-if)#switchport access vlan 10
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Switch(config-if)#int f0/3
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Switch(config-if)#switchport access vlan 20
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Switch(config-if)#int f0/4
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Switch(config-if)#switchport access vlan 20
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Untuk pengecekan,ping dari satu PC ke PC lain dan ketikkan perintah show vlan
+pada switch. PC tidak bisa ping ke beda VLAN.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PC&amp;gt;ping 10.10.10.11
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Pinging 10.10.10.11 with 32 bytes of data:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Reply from 10.10.10.11: bytes=32 time=0ms TTL=128
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Reply from 10.10.10.11: bytes=32 time=0ms TTL=128
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Reply from 10.10.10.11: bytes=32 time=0ms TTL=128
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Reply from 10.10.10.11: bytes=32 time=0ms TTL=128
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Ping statistics for 10.10.10.11:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Approximate round trip times in milli-seconds:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Minimum = 0ms, Maximum = 0ms, Average = 0ms
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PC&amp;gt;ping 20.20.20.21
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Pinging 20.20.20.21 with 32 bytes of data:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Request timed out.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Request timed out.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Request timed out.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Request timed out.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Ping statistics for 20.20.20.21:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PC&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Switch#show vlan
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;VLAN Name                               Status             Ports
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---- -------------------------------- --------- ----------------------------
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1    default                            active   Fa0/5, Fa0/6, Fa0/7, Fa0/8
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                                 Fa0/9, Fa0/10, Fa0/11,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                                 Fa0/12, Fa0/13, Fa0/14, 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                                 Fa0/15, Fa0/16, Fa0/17, 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                                 Fa0/18, Fa0/19, Fa0/20, 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                                 Fa0/21, Fa0/22, Fa0/23,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                                 Fa0/24
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;10   VLAN0010                           active   Fa0/1, Fa0/2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;20   VLAN0020                           active   Fa0/3, Fa0/4
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1002 fddi-default                       act/unsup
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1003 token-ring-default                 act/unsup
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1004 fddinet-default                    act/unsup
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1005 trnet-default                      act/unsup
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Makasih :D&lt;/p&gt;
+&lt;h2 id=&#34;source--modul-mas-taufik-by-muhammad-taufik&#34;&gt;Source = Modul Mas Taufik by Muhammad Taufik&lt;/h2&gt;
+</description>
+        </item>
+        <item>
+        <title>Routing Static</title>
+        <link>http://localhost:1313/post/routing_static/routing_static/</link>
+        <pubDate>Sun, 24 Mar 2024 21:38:48 +0700</pubDate>
+        
+        <guid>http://localhost:1313/post/routing_static/routing_static/</guid>
+        <description>&lt;h1 id=&#34;routing&#34;&gt;Routing&lt;/h1&gt;
+&lt;p&gt;Routing merupakan teknik yang digunakan untuk menghubungkan beberapa jaringan yang memiliki network address maupun teknologi yang berbeda-beda.&lt;/p&gt;
+&lt;h2 id=&#34;konsep-static-routing&#34;&gt;Konsep Static Routing&lt;/h2&gt;
+&lt;p&gt;Sebelum mengkonfigurasikan routing statik, maka saya ingin menjelaskan sedikit tentang konsep routing statik. Ini dimaksudkan supaya Anda tidak kebingungan mana kala akan mengkonfigurasikan routing statik pada topologi jaringan berbeda&lt;/p&gt;
+&lt;p&gt;Untuk memudahkan pemahaman tentang konsep routing statik, saya menggunakan topologi sederhana yang menggunakan dua router seperti terlihat pada gambar berikut&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/Topology1.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Topology1&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Sebagai langkah awal, konfigurasikanlah IP Address pada setiap interface yang ada pada Router R1 dan R2&lt;/p&gt;
+&lt;p&gt;Untuk melakukan teknik routing, Anda harus dapat membaca tabel routing. Tabel routing itu sendiri adalah tabel yang digunakan router sebagai pedoman untuk menuju suatu jaringan (network). Tabel ini dapat dianalogikan seperti peta yang akan digunakan oleh router. Router tidak akan dapat mengangkau suatu jaringan jika network address dari jaringan tersebut tidak ada dalam tabel routing. Tentunya, Anda akan kesulitan mencari suati lokasi jika lokasi tersebut tidak ada dalam peta&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/Tabel_Routing.webp&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Tabel_Routing&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Jika Anda perhatikan dengan seksama, tabel routing pada R1 tidak berisi informasi tentang network 192.168.2.0/24. Begitu juga dengan R2 yang tidak berisi informasi tentang 192.168.1.0/24. Ini mengakibatkan komputer 192.168.1.2 tidak dapat berhubungan dengan omputer 192.168.2.2&lt;/p&gt;
+&lt;p&gt;Prinsip yang Anda gunakan dalam menerapkan routing statik adalah &amp;ldquo;&lt;strong&gt;&lt;em&gt;Mau ke mana?&lt;/em&gt;&lt;/strong&gt;&amp;rdquo; dan &amp;ldquo;&lt;strong&gt;&lt;em&gt;Lewat mana?&lt;/em&gt;&lt;/strong&gt;&amp;rdquo;. Sebagai langkah pertama, marilah kita jadikan R1 sebagian acuan terlebih dahulu. Jika melihat topologi, jika R1 ingin menuju network 192.168.2.0/24, maka R1 harus melewati 10.10.10.2 yang merupakan interface &lt;em&gt;ether1&lt;/em&gt; dari R2. Dengan kata lain, 10.10.10.2 akan menjadi gatway bagi Router R1 jika ingin menuju network 192.168.2.0/24&lt;/p&gt;
+&lt;p&gt;Bagaimana dengan R2? Jika R2 ingin menuju network 192.168.1.0/24 maka R2 harus melewati 10.10.10.1 yang merupakan interface &lt;em&gt;ether1&lt;/em&gt; dari R1. Router R2 harus menggunakan 10.10.10.1 sebagai gateway untuk menuju network 192.168.1.0/24&lt;/p&gt;
+&lt;p&gt;Setelah memahami dengan benar konsep &amp;ldquo;&lt;strong&gt;&lt;em&gt;Mau ke mana?&lt;/em&gt;&lt;/strong&gt;&amp;rdquo; dan &amp;ldquo;&lt;strong&gt;&lt;em&gt;Lewat mana?&lt;/em&gt;&lt;/strong&gt;&amp;rdquo;, maka tibalah saatnya Anda memberikan perintah-perintah konfigurasi routing statik baik pada R1 dan R2&lt;/p&gt;
+&lt;p&gt;Adapun perintah yang dapat Anda gunakan pada R1, agar R1 mengenal network 192.168.2.0/24&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;admin@R1&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &amp;gt; ip route add dst-address&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;192.168.2.0/24 gateway 10.10.10.2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Sedangkan untuk R2, perintah yang dapat Anda gunakan adalah sebagai berikut&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;admin@R2&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &amp;gt; ip route add dst-address&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;192.168.1.0/24 gateway 10.10.10.1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Setelah konfigurasi routing statik selesai Anda lakukan, maka periksalah kembali tabel routing pada masing-masing router. Seharusnya tabel routing pada masing-masing router terlihat seperti berikut&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/Route_Print.webp&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Route_Print&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Anda dapat melihat tabel routing pada R1 telah lengkap, akrena telah berisi informasi network 192.168.2.0/24 dengan gateway 10.10.10.2. Begitu juga dengan tabel routing R2 yang telah memuat informasi network 192.168.1.0/24 dengan gateway 10.10.10.1. Jika tabel routing ini sudah lengkap, maka seharusnya komputer 192.168.1.2 sudah dapat berhubungan dengan komputer 192.168.2.2, demikian pula sebaliknya&lt;/p&gt;
+&lt;p&gt;Pada saat Anda melakukan konfigurasi IP Address pada komputer 192.168.1.2, jangan lupa untuk mengkonfigurasikan 192.168.1.1 sebagai default gateway. Begitu juga dengan komputer 192.168.2.2, Anda harus mengkonifurasikan 192.168.2.1 sebagai default gateway bagi komputer tersebut.&lt;/p&gt;
+&lt;p&gt;Makasih :D&lt;/p&gt;
+&lt;h2 id=&#34;source--mikrotik-kung-fu-kitab-2-by-rendra-towidjojo&#34;&gt;Source = Mikrotik Kung Fu Kitab 2 by Rendra Towidjojo&lt;/h2&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
